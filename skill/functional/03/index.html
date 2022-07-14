@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>高阶函数和装饰器模式 | ベ断桥烟雨ミの学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="学习爱我，我爱学习～">
+    <meta name="keywords" content="Plotly,Python">
+    <meta name="theme-color" content="#11a8cd">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="preload" href="/assets/css/0.styles.0e7a4495.css" as="style"><link rel="preload" href="/assets/js/app.1ff55151.js" as="script"><link rel="preload" href="/assets/js/2.643141c2.js" as="script"><link rel="preload" href="/assets/js/51.dfef55e6.js" as="script"><link rel="prefetch" href="/assets/js/10.ab19379f.js"><link rel="prefetch" href="/assets/js/11.d891d1c8.js"><link rel="prefetch" href="/assets/js/12.a0df49bd.js"><link rel="prefetch" href="/assets/js/13.386715a7.js"><link rel="prefetch" href="/assets/js/14.1f37ee2a.js"><link rel="prefetch" href="/assets/js/15.a748f2af.js"><link rel="prefetch" href="/assets/js/16.626866df.js"><link rel="prefetch" href="/assets/js/17.8b152fe3.js"><link rel="prefetch" href="/assets/js/18.35c66d23.js"><link rel="prefetch" href="/assets/js/19.4f5c334e.js"><link rel="prefetch" href="/assets/js/20.e63395f2.js"><link rel="prefetch" href="/assets/js/21.67e407e3.js"><link rel="prefetch" href="/assets/js/22.5ae983c0.js"><link rel="prefetch" href="/assets/js/23.b38fc0b8.js"><link rel="prefetch" href="/assets/js/24.13360c43.js"><link rel="prefetch" href="/assets/js/25.25c1aa68.js"><link rel="prefetch" href="/assets/js/26.2d9405d0.js"><link rel="prefetch" href="/assets/js/27.9ece5a6f.js"><link rel="prefetch" href="/assets/js/28.ba3ebddb.js"><link rel="prefetch" href="/assets/js/29.4d31400d.js"><link rel="prefetch" href="/assets/js/3.1af8c6dc.js"><link rel="prefetch" href="/assets/js/30.1fd3dba0.js"><link rel="prefetch" href="/assets/js/31.86603237.js"><link rel="prefetch" href="/assets/js/32.523636df.js"><link rel="prefetch" href="/assets/js/33.f5da43cd.js"><link rel="prefetch" href="/assets/js/34.5b5a556d.js"><link rel="prefetch" href="/assets/js/35.fd58fc8f.js"><link rel="prefetch" href="/assets/js/36.4d76b031.js"><link rel="prefetch" href="/assets/js/37.ed615578.js"><link rel="prefetch" href="/assets/js/38.74546a4f.js"><link rel="prefetch" href="/assets/js/39.f035ad55.js"><link rel="prefetch" href="/assets/js/4.ace91c23.js"><link rel="prefetch" href="/assets/js/40.42eac361.js"><link rel="prefetch" href="/assets/js/41.8cdc2ca6.js"><link rel="prefetch" href="/assets/js/42.73a28954.js"><link rel="prefetch" href="/assets/js/43.e7fb1c4a.js"><link rel="prefetch" href="/assets/js/44.e2dec67e.js"><link rel="prefetch" href="/assets/js/45.3fd1253a.js"><link rel="prefetch" href="/assets/js/46.22d4944c.js"><link rel="prefetch" href="/assets/js/47.0860ca79.js"><link rel="prefetch" href="/assets/js/48.af899032.js"><link rel="prefetch" href="/assets/js/49.46508650.js"><link rel="prefetch" href="/assets/js/5.b95905a6.js"><link rel="prefetch" href="/assets/js/50.110d8a7d.js"><link rel="prefetch" href="/assets/js/52.24eac4fa.js"><link rel="prefetch" href="/assets/js/53.94486a52.js"><link rel="prefetch" href="/assets/js/54.39e838bf.js"><link rel="prefetch" href="/assets/js/55.1f0be593.js"><link rel="prefetch" href="/assets/js/56.1779b832.js"><link rel="prefetch" href="/assets/js/57.12e4be79.js"><link rel="prefetch" href="/assets/js/6.76741297.js"><link rel="prefetch" href="/assets/js/7.62cfa4f8.js"><link rel="prefetch" href="/assets/js/8.ef2f8b66.js"><link rel="prefetch" href="/assets/js/9.d5c4260d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0e7a4495.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/favicon.png" alt="ベ断桥烟雨ミの学习笔记" class="logo"> <span class="site-name can-hide">ベ断桥烟雨ミの学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/ml/" class="nav-link">机器学习</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据可视化" class="dropdown-title"><a href="/visualization/" class="link-title">数据可视化</a> <span class="title" style="display:none;">数据可视化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/visualization/plotly/" class="nav-link">Plotly</a></li></ul></div></div><div class="nav-item"><a href="/skill/" class="nav-link router-link-active">技术杂谈</a></div> <a href="https://github.com/Dragon1573/Study-Notes" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/ml/" class="nav-link">机器学习</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据可视化" class="dropdown-title"><a href="/visualization/" class="link-title">数据可视化</a> <span class="title" style="display:none;">数据可视化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/visualization/plotly/" class="nav-link">Plotly</a></li></ul></div></div><div class="nav-item"><a href="/skill/" class="nav-link router-link-active">技术杂谈</a></div> <a href="https://github.com/Dragon1573/Study-Notes" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/skill/168ba03/" class="sidebar-link">回溯法解九数字问题</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>函数式编程</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/skill/functional/01/" class="sidebar-link">纯度、一等实体和不变性</a></li><li><a href="/skill/functional/02/" class="sidebar-link">使用递归</a></li><li><a href="/skill/functional/03/" aria-current="page" class="active sidebar-link">高阶函数和装饰器模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/skill/functional/03/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header level2"><a href="/skill/functional/03/#第1部分-另一个例子" class="sidebar-link">第1部分 - 另一个例子</a></li><li class="sidebar-sub-header level2"><a href="/skill/functional/03/#第2部分-装饰器" class="sidebar-link">第2部分 - 装饰器</a></li><li class="sidebar-sub-header level2"><a href="/skill/functional/03/#第3部分-装饰的门道" class="sidebar-link">第3部分 - 装饰的门道</a></li><li class="sidebar-sub-header level2"><a href="/skill/functional/03/#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/skill/functional/04/" class="sidebar-link">λ表达式及其组合</a></li><li><a href="/skill/functional/05/" class="sidebar-link">运算符即函数，偏函数和柯里化</a></li><li><a href="/skill/functional/06/" class="sidebar-link">列表处理中的工具</a></li><li><a href="/skill/functional/07/" class="sidebar-link">Python中的惰性计算</a></li></ul></section></li><li><a href="/skill/681db0b/" class="sidebar-link">更换默认Shell</a></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/skill/#技术杂谈" data-v-06225672>技术杂谈</a></li><li data-v-06225672><a href="/skill/#函数式编程" data-v-06225672>函数式编程</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://github.com/Dragon1573" target="_blank" title="作者" class="beLink" data-v-06225672>Dragon1573</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2021-10-05</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">高阶函数和装饰器模式<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>在 Python 中，函数是 <strong>一等实体</strong> ，它允许我们以另一个函数作为参数来构造函数。对其他函数进行操作的此类函数通常称为 <strong>高阶函数</strong> 。它是一个非常强大的工具，可以为一些现有问题构建更通用的解决方案。本系列第1课提供了一个简单的示例，其中定义了<code>toTfunc()</code>函数，该函数采用具有多个参数的某个函数并返回采用一系列必要参数的相同函数。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">toTfunc</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">res</span><span class="token punctuation">(</span>_tuple<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>_tuple<span class="token punctuation">)</span>
+    
+    <span class="token keyword">return</span> res
+</code></pre></div><h2 id="第1部分-另一个例子"><a href="#第1部分-另一个例子" class="header-anchor">#</a> 第1部分 - 另一个例子</h2> <p>这是另一个例子：假设我们在程序中大量使用日志，并且希望简化写入日志文件的过程。我们可以编写完整的<code>open(filename, mode)</code>模式，然后在每次需要时显式使用<code>write()</code>和<code>close()</code>方法。但是，如果我们需要在许多不同的文件上频繁调用它，我们希望一切看起来更紧凑。</p> <p>我们可以定义一个函数，它接受一个文件名并返回一个绑定到该文件的记录器，它的工作非常简单：我们给记录器一条消息，它以我们需要的模式打开文件，将消息附加到文件的末尾并添加一个换行符，然后关闭文件。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">makeLog</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">log</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>entry <span class="token operator">+</span> <span class="token string">'\n'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> log
+
+
+testLog <span class="token operator">=</span> makeLog<span class="token punctuation">(</span><span class="token string">'test.txt'</span><span class="token punctuation">)</span>
+testLog<span class="token punctuation">(</span><span class="token string">&quot;Don't&quot;</span><span class="token punctuation">)</span>
+testLog<span class="token punctuation">(</span><span class="token string">'Panic'</span><span class="token punctuation">)</span>
+entries <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'test.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>entries<span class="token punctuation">)</span>
+
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Don't
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> Panic
+</code></pre></div><p>还有另一种使用此功能特性的方法，这在 Python 程序中很常见。</p> <h2 id="第2部分-装饰器"><a href="#第2部分-装饰器" class="header-anchor">#</a> 第2部分 - 装饰器</h2> <p>假设我们想比较使用朴素递归方法并以迭代方式计算第 <mjx-container jax="SVG" class="MathJax" style="direction:ltr;"><svg xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 1000 688" style="overflow:visible;min-height:1px;min-width:1px;vertical-align:-0.05ex;"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z" style="stroke-width:3;"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)" style="stroke-width:3;"></path></g></g></g></svg></mjx-container> 个斐波那契数所花费的时间。好吧，我们可以只打印出两个函数执行前后时间函数的差异：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> time <span class="token keyword">import</span> time
+
+
+t <span class="token operator">=</span> time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ffib<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Execution time:'</span><span class="token punctuation">,</span> time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> t<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Execution time<span class="token punctuation">:</span> <span class="token number">0.953125</span>
+
+t <span class="token operator">=</span> time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+fib<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Execution time:'</span><span class="token punctuation">,</span> time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> t<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Execution time<span class="token punctuation">:</span> <span class="token number">0.0</span>
+</code></pre></div><p>但那是一些劣质的复制粘贴，如果某些代码被多次使用，这是一个很好的、证明有些东西可以被化简的证据。与其一遍又一遍地重复代码，因为我们将来可能需要做类似的事情，我们可以设计一个函数，将某个函数作为其输入并返回一个与给定函数本质上相同的函数，但是它在返回值之前打印出执行时间。实现可能是这样的：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">timed</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">from</span> time <span class="token keyword">import</span> time
+        
+        t <span class="token operator">=</span> time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        res <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Execution time:'</span> <span class="token operator">+</span> time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> t<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> res
+
+    <span class="token keyword">return</span> inner
+
+
+tfib <span class="token operator">=</span> timed<span class="token punctuation">(</span>fib<span class="token punctuation">)</span>
+tffib <span class="token operator">=</span> timed<span class="token punctuation">(</span>ffib<span class="token punctuation">)</span>
+tfib<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Execution time<span class="token punctuation">:</span> <span class="token number">0.0</span>
+
+tffib<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Execution time<span class="token punctuation">:</span> <span class="token number">0.96875</span>
+</code></pre></div><p>我希望你熟悉这个星号。当与函数定义一起使用时，这些星号表示除了明确编写的参数和关键字参数之外，还可以有任意数量的参数和关键字参数。所以，这个<code>*args</code>意味着在括号中明确指定的参数之后给函数的所有参数都应该打包到一个名为<code>args</code>的列表中；<code>**kwargs</code>意味着所有没有在定义中明确写出的给函数的关键字参数都应该打包到一个名为<code>kwargs</code>的字典中。在这种情况下，我们不知道将提供给函数的参数数量、它们是否会被命名以及它们将具有什么名称。所以我们只是将传递给列表和字典的任何参数打包在函数定义之外使用时，这些星号用于解包这些结构。这意味着通过调用<code>func(*args, **kwargs)</code>，我们正在调用传递给<code>timed()</code>的函数，并将参数传递给<code>inner()</code>。</p> <p>这样，我们将一些函数传递给定时函数，它返回一个函数，它的作用与我们之前所做的基本相同：它将接受您传递的任何参数，将初始函数应用于这些参数，然后在返回结果之前将打印出执行时间。所以这个定时函数有点像其他函数的包装，它添加了一些额外的功能而不改变原始函数的实际作用。现在我们可以像这样将这个计时器包裹在我们的<code>fibs()</code>版本中。如您所见，新的<code>t...</code>函数的行为方式与以前完全相同，但现在我们获得了一个附加功能。请注意，我们可以通过编写<code>fib = timed(fib)</code>来重新定义原始函数，而不是定义一个别的函数名称。</p> <p>这种将某个函数重新定义为包装到某个包装函数中的同一个函数的模式是非常常见和有用的事情，它被称为 <strong>装饰器模式</strong> 。它在 Python 中使用的非常多，有自己的语法糖。假设我们想让这个引入包装器，它接受一个函数并返回在执行之前打印出它的名称的相同函数。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">introduce</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>func<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> inner
+
+
+<span class="token decorator annotation punctuation">@introduce</span>
+<span class="token keyword">def</span> <span class="token function">id</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x
+
+
+<span class="token comment"># 在 def 关键字前指定 @introduce ，</span>
+<span class="token comment"># 与调用 id = introduce(id) 含义相同</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">id</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> <span class="token number">20</span>
+</code></pre></div><p>现在，我们可以在函数定义上方写上这个<code>@</code>符号，而不是写<code>somefunc = introduce(somefunc)</code>，这相当于先写定义，然后再调用<code>id = introduce(id)</code>。如果你看到这个语法，请记住它与将定义的函数更改为<code>@</code>符号后的函数应用到定义的函数的结果相同。因为后者完全可以理解，而前者在您第一次看到它时可能看起来像是某种『魔法』。</p> <p>如您所见，这是一个非常巧妙的特性，无需深入研究实现即可扩展功能。这种方法在函数式编程中经常使用，而使用装饰器是实现这一目标的好工具。</p> <p>让我们看另一个使用装饰器的例子：回想由于非线性递归计算方案，<code>fib()</code>的递归实现有多慢。</p> <p>不过，如果我们有办法让函数记住它在某些特定输入上的结果，这个问题就可以解决。因此，在计算结果之前，我们可以检查答案是否已经为我们所知，我们可以直接返回它。</p> <p>空间和时间<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>之间的这种权衡是很常见的事情，因为我们试图保持我们函数的纯度，我们可以肯定，大部分时间里，只要输入不变，我们的函数的输出应该是相同的。因此，实现这样的功能将使我们能够从使用函数式方法中获得更多优势。因此，如果您愿意，我们希望通过某种方式将任意函数添加为 <strong>缓存</strong> 。</p> <p>向现有函数添加一些增强功能正是装饰器的用途。让我们制作一个这样的装饰器并测试它，有一些与散列相关的事情，你想用这个实现做，但现在让我们保持简单。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">cached</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    func<span class="token punctuation">.</span>cache <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        key <span class="token operator">=</span> args<span class="token punctuation">,</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>kwargs<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> key <span class="token keyword">not</span> <span class="token keyword">in</span> func<span class="token punctuation">.</span>cache<span class="token punctuation">:</span>
+            func<span class="token punctuation">.</span>cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">.</span>cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> inner
+
+
+<span class="token decorator annotation punctuation">@cached</span>
+<span class="token keyword">def</span> <span class="token function">cffib</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token keyword">if</span> n <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">else</span> cffib<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> cffib<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+
+tcffib <span class="token operator">=</span> timed<span class="token punctuation">(</span>cffib<span class="token punctuation">)</span>
+tfib<span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Execution time<span class="token punctuation">:</span> <span class="token number">0.0</span>
+
+<span class="token comment"># 没错，这就是30</span>
+tffib<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Execution time<span class="token punctuation">:</span> <span class="token number">0.953125</span>
+
+tcffib<span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Execution time<span class="token punctuation">:</span> <span class="token number">0.0</span>
+</code></pre></div><p>在 Python 中，一切都是我们可以使用的对象。由于函数也是对象，我们可以为任何函数定义一个新属性。让我们为传递给缓存的装饰器函数的函数创建一个名为缓存的字典，然后我们将返回这个内部函数，它将与原始<code>func()</code>函数产生相同的结果。但在计算结果之前，它将在我们创建的作为<code>func()</code>函数属性的缓存字典中查找它。如果已经有一个，函数将返回它，否则它将计算结果并将其保存在缓存中。一个相当简单的实现，正如您可以从执行时间推断的那样，它确实有帮助。</p> <h2 id="第3部分-装饰的门道"><a href="#第3部分-装饰的门道" class="header-anchor">#</a> 第3部分 - 装饰的门道</h2> <p>装饰器很棒，但仍有一些事情需要讨论。首先，让我们回到用<code>@introduce</code>装饰器装饰的<code>id()</code>函数。假设我们想打印出文档或者我们想手动接收它的名字：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">help</span><span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">id</span><span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Help on function <span class="token builtin">id</span> <span class="token keyword">in</span> module __main__<span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> inner<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> inner
+</code></pre></div><p>当然这不是我们期望或想要看到的。具有讽刺意味的是，一个在调用时自我介绍的函数无法说出它的正确名称以及它在明确询问时的作用！当然，那是因为装饰的函数不是最初的函数体有一些变化，而是这个函数内部使用原始函数作为模拟其行为的工具。这可以在返回内部函数之前通过手动设置<code>__name__</code>和<code>__doc__</code>来修复 ，将内部函数的字段更改为原始函数中的任何字段。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">introduce2</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>func<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    inner<span class="token punctuation">.</span>__name__ <span class="token operator">=</span> func<span class="token punctuation">.</span>__name__
+    inner<span class="token punctuation">.</span>__doc__ <span class="token operator">=</span> func<span class="token punctuation">.</span>__doc__
+    <span class="token keyword">return</span> inner
+
+
+<span class="token decorator annotation punctuation">@introduce2</span>
+<span class="token keyword">def</span> <span class="token function">id2</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot; Identity function &quot;&quot;&quot;</span>
+    <span class="token keyword">return</span> x
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">help</span><span class="token punctuation">(</span>id2<span class="token punctuation">)</span><span class="token punctuation">,</span> id2<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Help on function id2 <span class="token keyword">in</span> module __main__<span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> id2<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> Identity function
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> id2
+</code></pre></div><p>问题是，在某些情况下，除了<code>__name__</code>和<code>__doc__</code>之外，还有很多字段您希望保持不变，但是手动设置所有这些字段有点蹩脚和重复。 所以我们希望重新定义<code>inner()</code>，让它做同样的事情，但有一点点增强。</p> <p>这听起来像是装饰器的工作，所以，我们可以用一个装饰器来概括一个装饰器设计问题的解决方案。幸运的是，<code>functools</code>模块中有一个解决方案。<code>functools</code>，从它的名字可以推断，是一个用于处理函数的模块，特别是高阶函数。</p> <p>有一个叫做<code>wraps()</code>的函数，它将一些函数<code>f()</code>作为输入并返回一个装饰器。这个装饰器可以应用于任何函数，将它的属性如<code>__name__</code>、<code>__doc__</code>等更改为函数<code>f()</code>的属性。因此，我们可以通过用装饰器<code>wraps(func)</code>装饰内部函数来解决我们的问题，因为我们希望在装饰<code>func()</code>函数时我们实际返回的内部函数具有与这个<code>func()</code>函数相同的属性。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> functools <span class="token keyword">import</span> wraps
+
+
+<span class="token keyword">def</span> <span class="token function">introduce3</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 它实际上有点像 wraps(func)(inner)</span>
+    <span class="token decorator annotation punctuation">@wraps</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>func<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> inner
+
+
+<span class="token decorator annotation punctuation">@introduce3</span>
+<span class="token keyword">def</span> <span class="token function">id3</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot; Identity function &quot;&quot;&quot;</span>
+    <span class="token keyword">return</span> x
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">help</span><span class="token punctuation">(</span>id3<span class="token punctuation">)</span><span class="token punctuation">,</span> id3<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> Help on function id3 <span class="token keyword">in</span> module __main__<span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> id3<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> Identity function
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> id3
+</code></pre></div><p>如您所见，它是有效的。我想再次指出，不是『<code>wraps</code>是装饰器』，而是『<code>wraps(func)</code>是装饰器』，可以这样写是因为这个<code>@</code>符号运算符的优先级低于函数调用。但它看起来是一个带参数的装饰器。在某种程度上确实如此，至少可以安全地将其视为带有参数的装饰器。</p> <p>如果我们也想要一个带参数的装饰器怎么办？假设我们希望能够指定用<code>@introduce</code>修饰的函数在调用时应该打印出其名称的次数，我们如何重复这种实际上不是装饰器本身而是返回装饰器的函数的行为？此外，这个结果装饰器的行为应该取决于赋予该装饰器返回函数的参数？嗯，从字面上看，我们正是这样做的。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> functools <span class="token keyword">import</span> wraps
+
+
+<span class="token keyword">def</span> <span class="token function">introduce4</span><span class="token punctuation">(</span>n<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">res_decorator</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token decorator annotation punctuation">@wraps</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+        <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span> <span class="token operator">+</span> func<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span> <span class="token operator">*</span> n<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> inner
+
+    <span class="token keyword">return</span> res_decorator
+
+
+<span class="token decorator annotation punctuation">@introduce4</span><span class="token punctuation">(</span>n<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">id4</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token string">&quot;Identity function&quot;</span>
+    <span class="token keyword">return</span> x
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>id4<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> id4
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> id4
+    <span class="token operator">&lt;</span>此处省略<span class="token number">39</span>行<span class="token operator">&gt;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> id4
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> <span class="token number">20</span>
+</code></pre></div><p>我们只是使用我们的旧装饰器，添加依赖于一些尚未给出的参数的功能。 然后我们添加另一层：我们将拥有一个名为<code>introduce()</code>的函数，而不是一个名为<code>introduce()</code>的装饰器函数，它看起来是一个参数化的装饰器，但它会接受我们希望使用的参数并返回旧的<code>introduce()</code>。现在可以使用这些参数，为了清楚起见，作为实际装饰器的返回函数称为『<strong>结果装饰器</strong>』。现在我们得到了我们想要的行为，如果我们不传递任何参数，<code>n</code>的默认值仍然等于<mjx-container jax="SVG" class="MathJax" style="direction:ltr;"><svg xmlns="http://www.w3.org/2000/svg" width="1.131ex" height="1.507ex" role="img" focusable="false" viewBox="0 -666 500 666" style="overflow:visible;min-height:1px;min-width:1px;vertical-align:0;"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" style="stroke-width:3;"></path></g></g></g></svg></mjx-container>。唯一的问题是我们不能只是省略括号，因为引入本身不再是一个装饰器，而是一个返回装饰器的函数。</p> <p>这工作正常，但这种嵌套层数使它有点不愉快。我的意思是，我们将来可能想要编写这样的函数，这些函数似乎是参数化装饰器。那么，我们是否将这个嵌套结构作为模板并每次都复制粘贴？那是不切实际的。如果我们可以在定义装饰器函数时在<code>func()</code>参数之后列出我们希望装饰器拥有的所有参数，那将会方便得多。 但问题是，这个<code>@</code>符号语法使得<code>def func()</code>之前的<code>@decorator</code>和写作<code>func = decorator(func)</code>含义相当。</p> <blockquote><p>我们希望定义这么一个函数：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">decorator</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> dec_args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 这里应该有点东西，此处单纯用 pass 来占位</span>
+    <span class="token keyword">pass</span>
+</code></pre></div><p>可是，下面第1种写法和第2种写法是等效的：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token decorator annotation punctuation">@decorator</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+
+func <span class="token operator">=</span> decorator<span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+</code></pre></div><p>所以，我们希望把它变成 <code>decorator(dec_args)(func)</code>，并期望它和<code>decorator(func, dec_args)</code>等效。所以，下面两种写法应该是等效的。</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token decorator annotation punctuation">@decorator</span><span class="token punctuation">(</span>dec_args<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+
+func <span class="token operator">=</span> decorator<span class="token punctuation">(</span>func<span class="token punctuation">,</span> dec_args<span class="token punctuation">)</span>
+</code></pre></div></blockquote> <p>让我们再次用装饰器解决装饰器设计问题：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> functools <span class="token keyword">import</span> wraps
+
+
+<span class="token keyword">def</span> <span class="token function">parameterized</span><span class="token punctuation">(</span>decorator<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">decoFunction</span><span class="token punctuation">(</span><span class="token operator">*</span>decargs<span class="token punctuation">,</span> <span class="token operator">**</span>deckwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">res_decorator</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> decorator<span class="token punctuation">(</span>func<span class="token punctuation">,</span> <span class="token operator">*</span>decargs<span class="token punctuation">,</span> <span class="token operator">**</span>deckwargs<span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> res_decorator
+
+    <span class="token keyword">return</span> decoFunction
+
+
+<span class="token decorator annotation punctuation">@parameterized</span>
+<span class="token keyword">def</span> <span class="token function">introduce5</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> n<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token decorator annotation punctuation">@wraps</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span> <span class="token operator">+</span> func<span class="token punctuation">.</span>__name__<span class="token punctuation">)</span> <span class="token operator">*</span> n<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> inner
+
+
+<span class="token decorator annotation punctuation">@introduce5</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">id5</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot; Identity function &quot;&quot;&quot;</span>
+    <span class="token keyword">return</span> x
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>id5<span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> id5
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> id5
+    <span class="token operator">&lt;</span>此处省略<span class="token number">39</span>行<span class="token operator">&gt;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> id5
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">|</span> <span class="token number">42</span>
+</code></pre></div><p>这个<code>@parameterized</code>是一个装饰器，它采用初始装饰器使其成为带参数的装饰器，所以它正在装饰一个初始装饰器。给定一个初始装饰器，<code>@parameterized</code>函数返回一个<code>decoFunction()</code>。这个<code>decoFunction</code>将我们想要传递给初始装饰器的参数作为它的参数，给定这些参数，<code>decoFunction()</code>返回结果装饰器，<code>@</code>运算符应用于此结果装饰器以将函数传递给它。一旦得到的装饰器得到这个函数，它就会返回将初始装饰器应用于参数序列的结果，其中这个函数是第一个参数，后面是先前传递给<code>decoFunction()</code>的初始装饰器参数。这个结果是明确定义的，因为这个参数顺序正是我们希望带有参数的初始装饰器具有的定义中的顺序。现在我们可以按照我们想要的方式用参数定义我们的装饰器，并用<code>@parameterized</code>装饰器装饰它。如您所见，它确实有效。</p> <blockquote><p>以下2种写法是等效的</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token decorator annotation punctuation">@introduce5</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">id5</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot; Identity function &quot;&quot;&quot;</span>
+    <span class="token keyword">return</span> x
+
+
+<span class="token comment">##### 分隔线 #####</span>
+<span class="token keyword">def</span> <span class="token function">id5</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot; Identity function &quot;&quot;&quot;</span>
+    <span class="token keyword">return</span> x
+
+
+id5 <span class="token operator">=</span> introduce5<span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">(</span>id5<span class="token punctuation">)</span>
+</code></pre></div><p>因此，我们希望<code>introduce5(42)(id5)</code>与<code>introduce5(id5, 42)</code>等效。</p> <p>当然，<code>introduce5 = parameterized(introduce5)</code>，所以完整展开应该是<code>parameterized(introduce5)(42)(id5)</code>，其中的<code>parameterized(introduce5) = decoFunction</code>。</p> <p>它代入装饰器参数<code>(*dec_args, **dec_kwargs)</code>实际上只有<code>n = 42</code>，因此<code>parameterized(introduce5)(42)(id5) = decoFunc(42)(id5)</code>。</p> <p>给定装饰器参数，<code>decoFunction</code>会生成一个结果装饰器，这个结果装饰器接受一个函数，返回将这个函数和装饰器参数作用于自身的结果。所以，<code>decoFunction(42)(id5) = res_decorator(id5) = introduce5(id5, 42)</code>，正是我们所期望的。</p></blockquote> <hr> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>这一节课，我们首先从上节课的示例中引出了『<strong>高阶函数</strong>』的定义，举了另一个运用高阶函数的例子（插入日志）；随后，我们借助斐波那契数列的缓存加速提出了『<strong>装饰器</strong>』的概念；最后，我们用较长的篇幅讲解了装饰器更深层的用法，如何避免原始函数的各项属性被装饰器覆盖、如何定义有参装饰器。</p> <hr class="footnotes-sep"> <section class="footnotes"><ol class="footnotes-list"><li id="fn1" class="footnote-item"><p>也就是内存使用量和计算时效性。 <a href="#fnref1" class="footnote-backref">↩︎</a></p></li></ol></section></div></div> <!----> <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2021/10/05, 13:58:39</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/skill/functional/02/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">使用递归</div></a> <a href="/skill/functional/04/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">λ表达式及其组合</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/skill/functional/02/" class="prev">使用递归</a></span> <span class="next"><a href="/skill/functional/04/">λ表达式及其组合</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="https://github.com/Dragon1573" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://blog.csdn.net/u011367208" title="CSDN" target="_blank" class="iconfont icon-csdn"></a><a href="https://space.bilibili.com/289561900" title="B站" target="_blank" class="iconfont icon-bilibili"></a><a href="https://www.youtube.com/channel/UCS36ZpuvN2Hp6tO1mcBgTig" title="YouTube" target="_blank" class="iconfont icon-youtube"></a><a href="https://y.qq.com/n/ryqq/profile/like/song?uin=owc5NKSAoK6A" title="QQ音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2021-2022
+    <span>Dragon1573 | <a href="https://github.com/Dragon1573/Study-Notes/blob/main/LICENSE.txt">CC-BY-SA 4.0</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1ff55151.js" defer></script><script src="/assets/js/2.643141c2.js" defer></script><script src="/assets/js/51.dfef55e6.js" defer></script>
+  </body>
+</html>
