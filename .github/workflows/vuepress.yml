@@ -22,8 +22,8 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          # 本项目使用的是 Nodejs v16
-          node-version: "16"
+          # 本项目使用的是 Nodejs LTS v18
+          node-version: "18"
 
       - uses: actions/cache@v2
         # 缓存本项目的 Yarn 依赖项，加速编译构建
