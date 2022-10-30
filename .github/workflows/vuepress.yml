@@ -25,8 +25,8 @@ jobs:
       - name: Setup nodejs
         uses: actions/setup-node@v2
         with:
-          # 本项目使用的是 Nodejs v16
-          node-version: "16"
+          # 本项目使用的是 Nodejs LTS v18
+          node-version: "18"
 
       - name: Restore yarn cache
         uses: actions/cache@v2
@@ -47,6 +47,10 @@ jobs:
       - name: Build site
         # 使用 Yarn 执行项目构建
         run: yarn build
+        env:
+          # 注意：Nodejs v17+ 更新了 OpenSSL ，可能与 Webpack 不兼容
+          #       此处使用环境变量指定 Nodejs 使用旧版本兼容的 OpenSSL
+          NODE_OPTIONS: "--openssl-legacy-provider"
 
       - name: Publish site
         uses: crazy-max/ghaction-github-pages@v2
