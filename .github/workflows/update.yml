@@ -1,0 +1,53 @@
+name: Update Dependencies
+
+on:
+  schedule:
+    # 定时任务：每日上午 06:00
+    - cron: "0 6 * * *"
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Setup nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Restore yarn cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            **/.yarn/cache
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: yarn-
+
+      - name: Update dependencies
+        # 更新 Yarn 项目的所有依赖项
+        run: yarn up '*'
+
+      - name: Commit and push
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: 'Update dependencies'
+          branch: ${{ github.ref_name }}
+
+      - name: Delete stale workflows
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 7
+          keep_minimum_runs: 4

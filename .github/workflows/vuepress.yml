@@ -1,8 +1,9 @@
-name: Pages
+name: Publish Pages
 
 on:
   push:
     branches:
+      # 只在提交到 main 分支时触发站点构建
       - main
 
 env:
@@ -14,18 +15,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
           submodules: true
           # 获取完整 Git 历史记录（默认将所有日志压缩到最近一次提交中）
           fetch-depth: 0
 
-      - uses: actions/setup-node@v2
+      - name: Setup nodejs
+        uses: actions/setup-node@v2
         with:
           # 本项目使用的是 Nodejs v16
           node-version: "16"
 
-      - uses: actions/cache@v2
+      - name: Restore yarn cache
+        uses: actions/cache@v2
         # 缓存本项目的 Yarn 依赖项，加速编译构建
         id: yarn-cache
         with:
@@ -44,7 +48,8 @@ jobs:
         # 使用 Yarn 执行项目构建
         run: yarn build
 
-      - uses: crazy-max/ghaction-github-pages@v2
+      - name: Publish site
+        uses: crazy-max/ghaction-github-pages@v2
         # 将构建产物部署到 GitHub Pages
         with:
           # 目标分支
@@ -58,7 +63,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: Mattraks/delete-workflow-runs@main
+      - name: Delete stale Workflows
+        uses: Mattraks/delete-workflow-runs@main
         # 移除以前的所有 Workflows 运行记录
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
