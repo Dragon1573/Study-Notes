@@ -5,6 +5,11 @@ on:
     branches:
       # 只在提交到 main 分支时触发站点构建
       - main
+    paths:
+      # 只在下列路径内容发生变化时触发站点构建
+      - 'docs/**'
+      - '.yarn/*.cjs'
+      - 'yarn.lock'
 
 env:
   # 配置时区（用于 Git 生成时间戳）
