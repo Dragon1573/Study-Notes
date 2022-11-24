@@ -33,6 +33,10 @@ jobs:
           key: yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: yarn-
 
+      - name: Update yarn
+        # 更新 Yarn 包管理器自身
+        run: yarn set version latest
+
       - name: Update dependencies
         # 更新 Yarn 项目的所有依赖项
         run: yarn up '*'
