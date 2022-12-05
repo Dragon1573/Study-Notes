@@ -7,48 +7,56 @@ on:
       - main
     paths:
       # 只在下列路径内容发生变化时触发站点构建
-      - 'docs/**'
-      - '.yarn/*.cjs'
-      - 'yarn.lock'
+      - "docs/**"
+      - ".yarn/*.cjs"
+      - "yarn.lock"
 
 env:
   # 配置时区（用于 Git 生成时间戳）
   TZ: Asia/Shanghai
 
+# 设置系统默认 Token 的权限，允许向 Pages 发布站点
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许1个并行的发布行为
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
+    # 指定站点的发布行为
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
           # 获取完整 Git 历史记录（默认将所有日志压缩到最近一次提交中）
           fetch-depth: 0
 
       - name: Setup nodejs
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           # 本项目使用的是 Nodejs LTS v18
           node-version: "18"
-
-      - name: Restore yarn cache
-        uses: actions/cache@v2
-        # 缓存本项目的 Yarn 依赖项，加速编译构建
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-            **/.yarn/cache
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: yarn-
-
+          # 此插件本身支持缓存依赖项
+          cache: "yarn"
+      # setup-node 操作对于 Yarn v2 的特殊配置
+      # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#yarn2-configuration
+      - name: Setup .yarnrc.yml
+        run: |
+          yarn config set nodeLinker node-modules
       - name: Install dependencies
-        # 当 Yarn 依赖配置更新后，刷新依赖项
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install
-
+        run: yarn install --immutable
       - name: Build site
         # 使用 Yarn 执行项目构建
         run: yarn build
@@ -57,20 +65,17 @@ jobs:
           #       此处使用环境变量指定 Nodejs 使用旧版本兼容的 OpenSSL
           NODE_OPTIONS: "--openssl-legacy-provider"
 
-      - name: Publish site
-        uses: crazy-max/ghaction-github-pages@v2
-        # 将构建产物部署到 GitHub Pages
+      # 使用 GitHub Actions 直接发布站点
+      # 不经过特定的站点发布分支
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v1
         with:
-          # 目标分支
-          target_branch: gh-pages
-          # 构建产物来源目录
-          build_dir: ./dist
-          # 关闭 Jekyll in GitHub
-          jekyll: false
-          # 展示详细日志
-          verbose: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: "./dist"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
 
       - name: Delete stale Workflows
         uses: Mattraks/delete-workflow-runs@main
