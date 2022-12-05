@@ -10,6 +10,7 @@ on:
       - "docs/**"
       - ".yarn/*.cjs"
       - "yarn.lock"
+  workflow_dispatch:
 
 env:
   # 配置时区（用于 Git 生成时间戳）
