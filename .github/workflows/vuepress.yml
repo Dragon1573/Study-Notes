@@ -8,9 +8,10 @@ on:
     paths:
       # 只在下列路径内容发生变化时触发站点构建
       - "docs/**"
-      - ".yarn/*.cjs"
-      - "yarn.lock"
+      - ".yarn/releases/*.cjs"
+      - yarn.lock
   workflow_dispatch:
+    # 也能由用户手动触发站点构建
 
 env:
   # 配置时区（用于 Git 生成时间戳）
