@@ -2,8 +2,8 @@ name: Update Dependencies
 
 on:
   schedule:
-    # 定时任务：每日上午 06:00
-    - cron: "0 6 * * *"
+    # 定时任务：世界协调时每周一凌晨 00:00
+    - cron: "0 0 * * 1"
 
 env:
   TZ: Asia/Shanghai
@@ -36,11 +36,22 @@ jobs:
         # 更新 Yarn 项目的所有依赖项
         run: yarn up '*'
 
+      - name: Gather update informations
+        id: update_informations
+        # 从 Git Diff 中提取本次升级涉及的内容
+        run: |
+          git diff package.json && echo
+          echo "details=$(git diff package.json | grep -e '^[+-] ')" >> $GITHUB_OUTPUT
+
       - name: Commit and push
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          message: "Update dependencies"
+          # 使用上一步提取的更新日志
+          message: |
+            [Workflows] Update Dependencies
+
+            ${{ steps.update_informations.outputs.details }}
           branch: ${{ github.ref_name }}
 
       - name: Delete stale workflows
