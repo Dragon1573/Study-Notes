@@ -4,6 +4,8 @@ on:
   schedule:
     # 定时任务：世界协调时每周一凌晨 00:00
     - cron: "0 0 * * 1"
+  workflow_dispatch:
+    # 出错了也能手动去触发
 
 env:
   TZ: Asia/Shanghai
@@ -25,8 +27,7 @@ jobs:
           cache: "yarn"
 
       - name: Setup .yarnrc.yml
-        run: |
-          yarn config set nodeLinker node-modules
+        run: yarn config set nodeLinker node-modules
 
       - name: Update yarn
         # 更新 Yarn 包管理器自身
@@ -37,11 +38,16 @@ jobs:
         run: yarn up '*'
 
       - name: Gather update informations
-        id: update_informations
-        # 从 Git Diff 中提取本次升级涉及的内容
+        # 从 Git Diff 中提取本次升级涉及的内容，导出到文件
         run: |
-          git diff package.json && echo
-          echo "details=$(git diff package.json | grep -e '^[+-] ')" >> $GITHUB_OUTPUT
+          git diff package.json | grep '^[+-] ' | tee update.log
+
+      - name: Read difference
+        # 从指定文件读取内容
+        id: get_diff
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./update.log
 
       - name: Commit and push
         uses: actions-js/push@master
@@ -49,15 +55,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # 使用上一步提取的更新日志
           message: |
-            [Workflows] Update Dependencies
+            Update Dependencies
 
-            ${{ steps.update_informations.outputs.details }}
+            ${{ steps.get_diff.outputs.content }}
           branch: ${{ github.ref_name }}
 
       - name: Delete stale workflows
         uses: Mattraks/delete-workflow-runs@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          retain_days: 7
-          keep_minimum_runs: 4
+          retain_days: 15
+          keep_minimum_runs: 7

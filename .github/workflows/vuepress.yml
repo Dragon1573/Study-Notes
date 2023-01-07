@@ -52,40 +52,51 @@ jobs:
           node-version: "18"
           # 此插件本身支持缓存依赖项
           cache: "yarn"
-      # setup-node 操作对于 Yarn v2 的特殊配置
-      # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#yarn2-configuration
+
+        # setup-node 操作对于 Yarn v2 的特殊配置，VuePress 工程必须使用 node-modules 模式才能启动构建
+        # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#yarn2-configuration
       - name: Setup .yarnrc.yml
-        run: |
-          yarn config set nodeLinker node-modules
+        run: "yarn config set nodeLinker node-modules"
+
       - name: Install dependencies
-        run: yarn install --immutable
+        # 安装依赖项，此处必须添加 "--immutable" 避免依赖项版本被更改
+        run: "yarn install --immutable"
+
       - name: Build site
         # 使用 Yarn 执行项目构建
         run: yarn build
         env:
           # 注意：Nodejs v17+ 更新了 OpenSSL ，可能与 Webpack 不兼容
-          #       此处使用环境变量指定 Nodejs 使用旧版本兼容的 OpenSSL
+          # 此处使用环境变量指定 Nodejs 使用旧版本兼容的 OpenSSL
           NODE_OPTIONS: "--openssl-legacy-provider"
 
-      # 使用 GitHub Actions 直接发布站点
-      # 不经过特定的站点发布分支
+        # 下列流程能够跳过专门的发布分支，直接从源码分支构建站点
+        # 初始化 GitHub Pages 项目
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v2
+
+        # 打包并上传站点编译构件
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v1
         with:
           path: "./dist"
+
+        # 将站点打包发布至 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        with:
+          # 展示上一次构建的结果
+          conclusion: true
 
+        # 移除已过期的
       - name: Delete stale Workflows
         uses: Mattraks/delete-workflow-runs@main
+        # 这个步骤无关紧要，允许运行失败
+        continue-on-error: true
         # 移除以前的所有 Workflows 运行记录
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          # 仅保留最近7天的日志
-          retain_days: 7
-          # 仅保留最近4次的日志
-          keep_minimum_runs: 4
+          # 只保留最近15天的构建记录
+          retain_days: 15
+          # 每条流水线最少保留最近的7次运行记录
+          keep_minimum_runs: 7            
