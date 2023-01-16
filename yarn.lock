@@ -10321,6 +10321,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rimraf@npm:^4.0.7":
+  version: 4.0.7
+  resolution: "rimraf@npm:4.0.7"
+  bin:
+    rimraf: dist/cjs/src/bin.js
+  checksum: 294ae526198eadac7b57e7b43782aaa0be5d5c2a606ee65c26d9cd2fdddc320d80cc43c3c1c0b9562e88aa265f67c4c00f70af2b4d065e76ce03d9d7a2a5c901
+  languageName: node
+  linkType: hard
+
 "ripemd160@npm:^2.0.0, ripemd160@npm:^2.0.1":
   version: 2.0.2
   resolution: "ripemd160@npm:2.0.2"
@@ -11191,7 +11200,7 @@ __metadata:
     json2yaml: ^1.1.0
     markdown-it-footnote: ^3.0.3
     markdown-it-mathjax3: ^4.3.2
-    rimraf: ^3.0.2
+    rimraf: ^4.0.7
     vuepress: ^1.9.8
     vuepress-plugin-one-click-copy: ^1.0.6
     vuepress-plugin-sitemap: ^2.3.1
