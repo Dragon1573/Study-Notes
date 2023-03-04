@@ -3,6 +3,8 @@ const plugins = require('./config/plugins.js');
 const themeConfig = require('./config/themeConfig.js');
 
 module.exports = {
+  port: 58080,
+
   theme: 'vdoing',
 
   base: '/',
@@ -24,7 +26,7 @@ module.exports = {
   },
   extendMarkdown: md => {
     md.set({ breaks: true });
-    md.use(require('markdown-it-mathjax3'), {tex: {tags: 'ams'}});
+    md.use(require('markdown-it-mathjax3'), { tex: { tags: 'ams' } });
     md.use(require('markdown-it-footnote'));
   }
 }
