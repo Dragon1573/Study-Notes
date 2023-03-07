@@ -5,7 +5,8 @@ module.exports = [
   { text: '技术杂谈', link: '/skill/' },
   {
     text: '友链', items: [
-      { text: 'Pinpe | 也许', link: 'http://pinpe.top/' }
+      { text: 'Pinpe | 也许', link: 'http://pinpe.top/' },
+      { text: 'Qlittle - 一个笔记Blog', link: 'https://qlittlo.github.io/' }
     ]
   }
 ]
