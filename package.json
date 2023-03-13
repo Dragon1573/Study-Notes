@@ -17,7 +17,7 @@
     "json2yaml": "^1.1.0",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-mathjax3": "^4.3.2",
-    "rimraf": "^4.3.0",
+    "rimraf": "^4.4.0",
     "vuepress": "^1.9.9",
     "vuepress-plugin-one-click-copy": "^1.0.6",
     "vuepress-plugin-sitemap": "^2.3.1",
