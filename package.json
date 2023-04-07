@@ -2,12 +2,12 @@
   "name": "study-notes",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
+    "dev": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress dev docs",
+    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress build docs",
     "update": "yarn remove vuepress-theme-vdoing && rimraf ./node_modules && yarn install && yarn add vuepress-theme-vdoing -D",
     "clean": "rimraf ./dist && echo 'Contents cleaned!'",
     "refresh": "node utils/editFrontmatter.js",
-    "test": "yarn build && yarn clean"
+    "test": "yarn run build && yarn run clean"
   },
   "license": "CC-BY-SA-4.0",
   "devDependencies": {
@@ -17,7 +17,7 @@
     "json2yaml": "^1.1.0",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-mathjax3": "^4.3.2",
-    "rimraf": "^4.4.1",
+    "rimraf": "^4.4.0",
     "vuepress": "^1.9.9",
     "vuepress-plugin-one-click-copy": "^1.0.6",
     "vuepress-plugin-sitemap": "^2.3.1",
