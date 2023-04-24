@@ -6764,9 +6764,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inquirer@npm:^9.1.5":
-  version: 9.1.5
-  resolution: "inquirer@npm:9.1.5"
+"inquirer@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "inquirer@npm:9.2.0"
   dependencies:
     ansi-escapes: ^6.0.0
     chalk: ^5.2.0
@@ -6783,7 +6783,7 @@ __metadata:
     strip-ansi: ^7.0.1
     through: ^2.3.6
     wrap-ansi: ^8.1.0
-  checksum: 8491fad532c781041abca63605505ddb4bfeaf6547c8a68aa3e9f5a72dec627e1f222d3dbb082dc741cbb031394c6ae3ca0c3d7d0ffde5087f235939996e63e5
+  checksum: ea795406a654e9eddf9782fbb1f4a4240a78bda825e23ee2cf059ea0723e470cbae8cc9d6c1ae8a58cadd0207d29f8cd8ac20ff7399958a8886dd17ff2f30136
   languageName: node
   linkType: hard
 
@@ -11243,7 +11243,7 @@ __metadata:
   dependencies:
     "@vuepress/plugin-google-analytics": ^1.9.7
     dayjs: ^1.11.7
-    inquirer: ^9.1.5
+    inquirer: ^9.2.0
     json2yaml: ^1.1.0
     markdown-it-footnote: ^3.0.3
     markdown-it-mathjax3: ^4.3.2
