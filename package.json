@@ -13,7 +13,7 @@
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^1.9.7",
     "dayjs": "^1.11.9",
-    "inquirer": "^9.2.7",
+    "inquirer": "^9.2.8",
     "json2yaml": "^1.1.0",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-mathjax3": "^4.3.2",
