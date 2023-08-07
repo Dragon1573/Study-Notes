@@ -3689,10 +3689,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli-width@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "cli-width@npm:4.0.0"
-  checksum: 1ec12311217cc8b2d018646a58b61424d2348def598fb58ba2c32e28f0bcb59a35cef168110311cefe3340abf00e5171b351de6c3e2c084bd1642e6e2a9e144e
+"cli-width@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "cli-width@npm:4.1.0"
+  checksum: 0a79cff2dbf89ef530bcd54c713703ba94461457b11e5634bd024c78796ed21401e32349c004995954e06f442d82609287e7aabf6a5f02c919a1cf3b9b6854ff
   languageName: node
   linkType: hard
 
@@ -5513,7 +5513,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"external-editor@npm:^3.0.3":
+"external-editor@npm:^3.1.0":
   version: 3.1.0
   resolution: "external-editor@npm:3.1.0"
   dependencies:
@@ -6800,16 +6800,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inquirer@npm:^9.2.9":
-  version: 9.2.9
-  resolution: "inquirer@npm:9.2.9"
+"inquirer@npm:^9.2.10":
+  version: 9.2.10
+  resolution: "inquirer@npm:9.2.10"
   dependencies:
     "@ljharb/through": ^2.3.9
     ansi-escapes: ^4.3.2
     chalk: ^5.3.0
     cli-cursor: ^3.1.0
-    cli-width: ^4.0.0
-    external-editor: ^3.0.3
+    cli-width: ^4.1.0
+    external-editor: ^3.1.0
     figures: ^5.0.0
     lodash: ^4.17.21
     mute-stream: 1.0.0
@@ -6818,8 +6818,8 @@ __metadata:
     rxjs: ^7.8.1
     string-width: ^4.2.3
     strip-ansi: ^6.0.1
-    wrap-ansi: ^6.0.1
-  checksum: 2d287e43de80def6392fe61f24644610dd7dd85ce2b6ed8b73a22fbd50b36d42c58fcdb2b00f0d07fb9073cc3e01ed5ac21bb6110ae7a686402888e98af39aec
+    wrap-ansi: ^6.2.0
+  checksum: 7ea6b3aff7a77d2b885f2dccf81736d46b15e1c8ead458b1725d468755e1be9b8c4bc2a8e9c9a4aa52a11b41c6b785696216915ee7090c94ee135e35973be19c
   languageName: node
   linkType: hard
 
@@ -11329,7 +11329,7 @@ __metadata:
   dependencies:
     "@vuepress/plugin-google-analytics": ^1.9.7
     dayjs: ^1.11.9
-    inquirer: ^9.2.9
+    inquirer: ^9.2.10
     json2yaml: ^1.1.0
     markdown-it-footnote: ^3.0.3
     markdown-it-mathjax3: ^4.3.2
@@ -11338,7 +11338,7 @@ __metadata:
     vuepress-plugin-one-click-copy: ^1.0.6
     vuepress-plugin-sitemap: ^2.3.1
     vuepress-plugin-zooming: ^1.1.8
-    vuepress-theme-vdoing: ^1.12.8
+    vuepress-theme-vdoing: ^1.12.9
     yamljs: ^0.3.0
   languageName: unknown
   linkType: soft
@@ -12303,9 +12303,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuepress-theme-vdoing@npm:^1.12.8":
-  version: 1.12.8
-  resolution: "vuepress-theme-vdoing@npm:1.12.8"
+"vuepress-theme-vdoing@npm:^1.12.9":
+  version: 1.12.9
+  resolution: "vuepress-theme-vdoing@npm:1.12.9"
   dependencies:
     "@better-scroll/core": ^2.0.0-beta.6
     "@better-scroll/slide": ^2.0.0-beta.6
@@ -12322,7 +12322,9 @@ __metadata:
     stylus-loader: ^3.0.2
     vuepress-plugin-container: ^2.0.2
     vuepress-plugin-smooth-scroll: ^0.0.3
-  checksum: d3bb54b1b1827a54aed1847f691377907ab9bdd473f13f58a11e7164f1cca1a5909bc762832d6bbd2a2915ef08400bfb8a3e2c45d844ff8d42fad791a95fc6cf
+  bin:
+    vdoing: bin/checkVersion.js
+  checksum: d6d0aeeba20ae75551f018e71fb0330c60eb3b12e361fd0d10705c18709472f58603e2fbb24ed8485c137ca98a6080029a471345730926c96903c8ffb42915f0
   languageName: node
   linkType: hard
 
@@ -12727,7 +12729,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrap-ansi@npm:^6.0.1":
+"wrap-ansi@npm:^6.2.0":
   version: 6.2.0
   resolution: "wrap-ansi@npm:6.2.0"
   dependencies:
