@@ -1927,18 +1927,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vuepress/core@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/core@npm:1.9.9"
+"@vuepress/core@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/core@npm:1.9.10"
   dependencies:
     "@babel/core": ^7.8.4
     "@vue/babel-preset-app": ^4.1.2
-    "@vuepress/markdown": 1.9.9
-    "@vuepress/markdown-loader": 1.9.9
-    "@vuepress/plugin-last-updated": 1.9.9
-    "@vuepress/plugin-register-components": 1.9.9
-    "@vuepress/shared-utils": 1.9.9
-    "@vuepress/types": 1.9.9
+    "@vuepress/markdown": 1.9.10
+    "@vuepress/markdown-loader": 1.9.10
+    "@vuepress/plugin-last-updated": 1.9.10
+    "@vuepress/plugin-register-components": 1.9.10
+    "@vuepress/shared-utils": 1.9.10
+    "@vuepress/types": 1.9.10
     autoprefixer: ^9.5.1
     babel-loader: ^8.0.4
     bundle-require: 2.1.8
@@ -1972,43 +1972,43 @@ __metadata:
     webpack-dev-server: ^3.5.1
     webpack-merge: ^4.1.2
     webpackbar: 3.2.0
-  checksum: ca1d2eb99dba7f6ecf30a1398b4b21c8ca79d99a29f7db89b333877071df28e0cd487910bbaa3ac16068ac973a2a9fb7c58696dc2ef6cc73f8557ad930235703
+  checksum: 967737656d5c72b191b8781b842aa9b9468b29d67e456754fc9738ef034b874f8a8191a7c2ade49a6ebbf008cecc8fec61a22d36b1dc7e48b99eb529d510ee92
   languageName: node
   linkType: hard
 
-"@vuepress/markdown-loader@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/markdown-loader@npm:1.9.9"
+"@vuepress/markdown-loader@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/markdown-loader@npm:1.9.10"
   dependencies:
-    "@vuepress/markdown": 1.9.9
+    "@vuepress/markdown": 1.9.10
     loader-utils: ^1.1.0
     lru-cache: ^5.1.1
-  checksum: aa91ddb7acf22c6b57c94ba0323507c925ff15a24d65fa2972677143371044297b960d0a5a884ad7b55770d9ab0a9b240c14df1f40853d4a810fd375bc9423cc
+  checksum: d7acd4a6ecf50c1f9e5c758ee5cb6f7a20e40bb3e4335100f35856c78e6f87fdef48745ac18ee68c974855d46b5b82bf527c5f6ecf808797a4fa7e68d1f2356b
   languageName: node
   linkType: hard
 
-"@vuepress/markdown@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/markdown@npm:1.9.9"
+"@vuepress/markdown@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/markdown@npm:1.9.10"
   dependencies:
-    "@vuepress/shared-utils": 1.9.9
+    "@vuepress/shared-utils": 1.9.10
     markdown-it: ^8.4.1
     markdown-it-anchor: ^5.0.2
     markdown-it-chain: ^1.3.0
     markdown-it-emoji: ^1.4.0
     markdown-it-table-of-contents: ^0.4.0
     prismjs: ^1.13.0
-  checksum: bcf95419f78ab9a2185fd2a554a754d8d830d0e8d08ece4bbdde145fa5ca98d6edf35c8878fef7f745425d143996004327d7ebfe1e1a5e4994559bfdd77658e8
+  checksum: 259e9e5d2639788003dcc333fa22bded51fa0dd89be41048b92f16ae3dbb78491154ce307dea4c1fbbcb2641bf3e240440854ad5bb8f138d110c665d61974f89
   languageName: node
   linkType: hard
 
-"@vuepress/plugin-active-header-links@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/plugin-active-header-links@npm:1.9.9"
+"@vuepress/plugin-active-header-links@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/plugin-active-header-links@npm:1.9.10"
   dependencies:
-    "@vuepress/types": 1.9.9
+    "@vuepress/types": 1.9.10
     lodash.debounce: ^4.0.8
-  checksum: 5647eddf29d401438daca06f3490d432cc9d6dcc8661a78a5750043b86754d14de9750a8eaa4212138ad35df11c844159ed1ca9fd43b2c148d716c1567c035b9
+  checksum: c287b1928bdbc24e62078c311a722f094a1d9fbecec6d2dbd078570c971d1c005d625f712c934a5300ba678d222fa89fc481f2531b06ab8011ebe2cfe05ec598
   languageName: node
   linkType: hard
 
@@ -2031,23 +2031,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vuepress/plugin-last-updated@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/plugin-last-updated@npm:1.9.9"
+"@vuepress/plugin-last-updated@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/plugin-last-updated@npm:1.9.10"
   dependencies:
-    "@vuepress/types": 1.9.9
+    "@vuepress/types": 1.9.10
     cross-spawn: ^6.0.5
-  checksum: 31b15bc2f288580156f78a7dba3349853b724564e54e9404aff29f19f1c72d36ed37ccc455e5fa70944abb15c7ebb05ee7b89f3afa4b8fbc0afd11bf4b815fec
+  checksum: 02a077c636965903503c117d80da106aaa9a25c186b23401d63d924fdc8fc7a112266a08cddeb1291ddd205d74f16c9ee9838f174ec0da9d41a8d9697580a463
   languageName: node
   linkType: hard
 
-"@vuepress/plugin-nprogress@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/plugin-nprogress@npm:1.9.9"
+"@vuepress/plugin-nprogress@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/plugin-nprogress@npm:1.9.10"
   dependencies:
-    "@vuepress/types": 1.9.9
+    "@vuepress/types": 1.9.10
     nprogress: ^0.2.0
-  checksum: 5eb603fc8311444f28aa566a03625dad230a369c44e51d8dceb5172053118011c838cb7ea2ac4d969f8a45f3fc5125dd54bfc052fd32efadb4b46e174a3a2795
+  checksum: 9cc5d74329282f4c79edc19367c5798160e808c8b327d07976be2fd111c527920bd21eb4f898ee234b5af5dcef4d1437b84dae1282c51ab9c4062d0b9e570125
   languageName: node
   linkType: hard
 
@@ -2061,22 +2061,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vuepress/plugin-register-components@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/plugin-register-components@npm:1.9.9"
+"@vuepress/plugin-register-components@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/plugin-register-components@npm:1.9.10"
   dependencies:
-    "@vuepress/shared-utils": 1.9.9
-    "@vuepress/types": 1.9.9
-  checksum: cc60458dce32713f8d47cd3f6ccdd9dad7efea27842b432dc44746ee76bee17be50f179e70a37563c40d564409bf508ae24e05c1271f512afc8380220912dcb1
+    "@vuepress/shared-utils": 1.9.10
+    "@vuepress/types": 1.9.10
+  checksum: 823d702b2a0a1b7e8d2c9f4f52438ef94bfa48e02d981e9b6e0914bf9a8ca964d1cf384a309414093ece9775a9d4751b6c52e3791bc9f4ad4b2ffaf4f3ba05c7
   languageName: node
   linkType: hard
 
-"@vuepress/plugin-search@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/plugin-search@npm:1.9.9"
+"@vuepress/plugin-search@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/plugin-search@npm:1.9.10"
   dependencies:
-    "@vuepress/types": 1.9.9
-  checksum: 51e1304213fe4a616ec30be0fd05eb7ebbb3a6fa66d170646d7712999d0f94f0478399e488d75d0654c3c815c5382429f7a2334921535589b26de2624de80a87
+    "@vuepress/types": 1.9.10
+  checksum: d2d455ce814a883e7648f8009ba7957dfb5c303160706b747d813651f209ad280f25ada7e5a6cbcc5f0d0bfb6772cf063865a62225f826639de02ac7cab73104
   languageName: node
   linkType: hard
 
@@ -2089,9 +2089,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vuepress/shared-utils@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/shared-utils@npm:1.9.9"
+"@vuepress/shared-utils@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/shared-utils@npm:1.9.10"
   dependencies:
     chalk: ^2.3.2
     escape-html: ^1.0.3
@@ -2102,7 +2102,7 @@ __metadata:
     semver: ^6.0.0
     toml: ^3.0.0
     upath: ^1.1.0
-  checksum: 8fc6e9d7d408ff4fa5cebc73f84a5169e3782d2a32225df6e25c178865b2581ee14a559bf345955824c74df94d522392914e18fe44dbfb014f74682c892dbc8f
+  checksum: 009695a8642f6adbf3a5f4fd2d4378fd7799bb5cc7a39a0036b6f05083101aeefa640cc405d6b3ee9718df369c2250d1ffcef77deca50b1b1a2dbf1909045f5d
   languageName: node
   linkType: hard
 
@@ -2123,21 +2123,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vuepress/theme-default@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/theme-default@npm:1.9.9"
+"@vuepress/theme-default@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/theme-default@npm:1.9.10"
   dependencies:
-    "@vuepress/plugin-active-header-links": 1.9.9
-    "@vuepress/plugin-nprogress": 1.9.9
-    "@vuepress/plugin-search": 1.9.9
-    "@vuepress/types": 1.9.9
+    "@vuepress/plugin-active-header-links": 1.9.10
+    "@vuepress/plugin-nprogress": 1.9.10
+    "@vuepress/plugin-search": 1.9.10
+    "@vuepress/types": 1.9.10
     docsearch.js: ^2.5.2
     lodash: ^4.17.15
     stylus: ^0.54.8
     stylus-loader: ^3.0.2
     vuepress-plugin-container: ^2.0.2
     vuepress-plugin-smooth-scroll: ^0.0.3
-  checksum: a215c59d45ef6aa9b5fbe8d0a4fb3533bf1997ef780773f6073b8a6f30703c0d05b1f72d5b769cc4bb5bc3fe68b5528dfef0e666211f982903fbeb9337344523
+  checksum: e594c0478e44e43651709055797b5fc0f412e42427235f6fb22c202f89e39b7438da7d8ff68dab89f19679bbe946a54fb4fbb0ab6ca76383f4f2e30548ae57e1
+  languageName: node
+  linkType: hard
+
+"@vuepress/types@npm:1.9.10":
+  version: 1.9.10
+  resolution: "@vuepress/types@npm:1.9.10"
+  dependencies:
+    "@types/markdown-it": ^10.0.0
+    "@types/webpack-dev-server": ^3
+    webpack-chain: ^6.0.0
+  checksum: 2108d1a060135f2a4e7230bd079c1585f65031fbda4b5b079c38112a8690acdb2776266502df825b052e4578b08a69add6d6e300ed20fb19cad22c6c493ee407
   languageName: node
   linkType: hard
 
@@ -2149,17 +2160,6 @@ __metadata:
     "@types/webpack-dev-server": ^3
     webpack-chain: ^6.0.0
   checksum: b5fae0f7b627066ccf19ee8fc3a6a7ec2e4a4fb09b554c35b7fd7e0493939d8ac514bac24a948a3f0fe1168b0855cdcd2ddc57a74d032c1f553d00a65c2eb246
-  languageName: node
-  linkType: hard
-
-"@vuepress/types@npm:1.9.9":
-  version: 1.9.9
-  resolution: "@vuepress/types@npm:1.9.9"
-  dependencies:
-    "@types/markdown-it": ^10.0.0
-    "@types/webpack-dev-server": ^3
-    webpack-chain: ^6.0.0
-  checksum: ca551abccecf914abb9193f43aab61beacd44c27fbba0b80dd2732fd5c53df342dda39cd95871e6a68c7428b8dbe812944cbda8e0711185d9a5e4a14edd37aba
   languageName: node
   linkType: hard
 
@@ -11334,7 +11334,7 @@ __metadata:
     markdown-it-footnote: ^3.0.3
     markdown-it-mathjax3: ^4.3.2
     rimraf: ^5.0.1
-    vuepress: ^1.9.9
+    vuepress: ^1.9.10
     vuepress-plugin-one-click-copy: ^1.0.6
     vuepress-plugin-sitemap: ^2.3.1
     vuepress-plugin-zooming: ^1.1.8
@@ -12328,20 +12328,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuepress@npm:^1.9.9":
-  version: 1.9.9
-  resolution: "vuepress@npm:1.9.9"
+"vuepress@npm:^1.9.10":
+  version: 1.9.10
+  resolution: "vuepress@npm:1.9.10"
   dependencies:
-    "@vuepress/core": 1.9.9
-    "@vuepress/theme-default": 1.9.9
-    "@vuepress/types": 1.9.9
+    "@vuepress/core": 1.9.10
+    "@vuepress/theme-default": 1.9.10
+    "@vuepress/types": 1.9.10
     cac: ^6.5.6
     envinfo: ^7.2.0
     opencollective-postinstall: ^2.0.2
     update-notifier: ^4.0.0
   bin:
     vuepress: cli.js
-  checksum: 59813e292363601c178c32302f2fa3453ad56338aeeb02ef54e704d4ba050ae8160ab8101ce24a2b3269917e141d722de5c3a80ae7473424fb62c09b843c18ac
+  checksum: 742905184ec677f2940cd1952397bf5ecb7357cc875c636266ac67e8cc3dedd27d8c7e36c94b9dc96b633d77753649ac7c40420f2e2d9b4ec8289f7ac5cdbcf2
   languageName: node
   linkType: hard
 
