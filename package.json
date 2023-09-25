@@ -12,7 +12,7 @@
   "license": "CC-BY-SA-4.0",
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^1.9.7",
-    "dayjs": "^1.11.9",
+    "dayjs": "^1.11.10",
     "inquirer": "^9.2.11",
     "json2yaml": "^1.1.0",
     "markdown-it-footnote": "^3.0.3",
