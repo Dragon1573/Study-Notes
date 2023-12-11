@@ -7990,10 +7990,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"markdown-it-footnote@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "markdown-it-footnote@npm:3.0.3"
-  checksum: b765a47720dbabd76f8b9379de4c4ac5a7963fff6a0f509f081955f0e7e338255410befadabf028b084883858b1f0fff11469bfa19a6521f096fb1d3734b4a74
+"markdown-it-footnote@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "markdown-it-footnote@npm:4.0.0"
+  checksum: 47aa807b143af211d7eca376c724b05e939e8b5960f6e287c63eca7f121be7ac697ff5601d5b7c89cbde7a32713a66b2a6f375251fad1fe989bd05d07f80e4cd
   languageName: node
   linkType: hard
 
@@ -11333,7 +11333,7 @@ __metadata:
     dayjs: "npm:^1.11.10"
     inquirer: "npm:^9.2.12"
     json2yaml: "npm:^1.1.0"
-    markdown-it-footnote: "npm:^3.0.3"
+    markdown-it-footnote: "npm:^4.0.0"
     markdown-it-mathjax3: "npm:^4.3.2"
     rimraf: "npm:^5.0.5"
     vuepress: "npm:^1.9.10"
