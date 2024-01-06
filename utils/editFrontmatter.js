@@ -5,7 +5,6 @@ const path = require('path');
 const matter = require('gray-matter');
 const jsonToYaml = require('json2yaml')
 const yamlToJs = require('yamljs')
-const inquirer = require('inquirer')
 const chalk = require('chalk')
 const readFileList = require('./modules/readFileList');
 const { type, repairDate } = require('./modules/fn');
@@ -21,6 +20,7 @@ async function main() {
     name: "edit",
   }];
   let edit = true;
+  const inquirer = (await import('inquirer')).default;
   await inquirer.prompt(promptList).then(answers => {
     edit = answers.edit
   })
@@ -63,7 +63,9 @@ async function main() {
       if (matterData.date && type(matterData.date) === 'date') {
         matterData.date = repairDate(matterData.date)
       }
-      const newData = jsonToYaml.stringify(matterData).replace(/\n\s{2}/g, "\n").replace(/"/g, "") + '---\r\n' + fileMatterObj.content;
+      const newData = jsonToYaml.stringify(matterData).replace(/\n\s{2}/g, "\n").replace(/"/g, "")
+        .split("\n").map(line => line.trimEnd()).join("\n")
+        + '---\r\n' + fileMatterObj.content;
       fs.writeFileSync(file.filePath, newData);
       log(chalk.green(`update frontmatter：${file.filePath} `))
     }
