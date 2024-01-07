@@ -6,7 +6,8 @@ module.exports = [
   {
     text: '友链', items: [
       { text: 'Qlittle - 一个笔记Blog', link: 'https://qlittlo.github.io/' },
-      { text: '冰白寒祭的博客', link: 'http://bingbaihanji.xyz/' }
+      { text: '冰白寒祭的博客', link: 'http://bingbaihanji.xyz/' },
+      { text: 'Pinpe 的云端', link: 'https://blog.pinpe.top' }
     ]
   }
 ]
